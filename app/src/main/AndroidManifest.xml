@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConstraintLayoutDemo">
-        <activity android:name=".Motion2Activity"></activity>
+        <activity android:name=".Motion3Activity"></activity>
+        <activity android:name=".Motion2Activity" />
         <activity android:name=".Layout1Activity" />
         <activity android:name=".Motion1Activity" />
         <activity android:name=".MainActivity">
