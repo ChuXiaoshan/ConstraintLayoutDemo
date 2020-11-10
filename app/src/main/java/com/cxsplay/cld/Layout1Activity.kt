@@ -1,0 +1,44 @@
+package com.cxsplay.cld
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.databinding.DataBindingUtil
+import com.cxsplay.cld.databinding.ActivityLayout1Binding
+
+class Layout1Activity : AppCompatActivity() {
+
+    private lateinit var bind: ActivityLayout1Binding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bind = DataBindingUtil.setContentView(this, R.layout.activity_layout1)
+        init()
+    }
+
+    private fun init() {
+        bind.btn1.setOnClickListener { changeConstraint(0) }
+        bind.btn3.setOnClickListener { changeConstraint(1) }
+    }
+
+    /**
+     * 动态改变约束 flag: 0 左边，1 右边
+     */
+    private fun changeConstraint(flag: Int) {
+        bind.cl3.let {
+            val set = ConstraintSet()
+            set.clone(it)
+            set.clear(R.id.btn_2, ConstraintSet.END)
+            set.clear(R.id.btn_2, ConstraintSet.START)
+            set.clear(R.id.btn_2, ConstraintSet.BOTTOM)
+            if (flag == 1) {
+                set.connect(R.id.btn_2, ConstraintSet.END, R.id.btn_3, ConstraintSet.START)
+                set.connect(R.id.btn_2, ConstraintSet.BOTTOM, R.id.btn_3, ConstraintSet.BOTTOM)
+            } else {
+                set.connect(R.id.btn_2, ConstraintSet.START, R.id.btn_1, ConstraintSet.END)
+                set.connect(R.id.btn_2, ConstraintSet.BOTTOM, R.id.btn_1, ConstraintSet.BOTTOM)
+            }
+            set.applyTo(it)
+        }
+    }
+}
