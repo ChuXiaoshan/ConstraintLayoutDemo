@@ -1,6 +1,8 @@
 package com.cxsplay.cld
 
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.databinding.DataBindingUtil
@@ -31,14 +33,20 @@ class Layout1Activity : AppCompatActivity() {
             set.clear(R.id.btn_2, ConstraintSet.END)
             set.clear(R.id.btn_2, ConstraintSet.START)
             set.clear(R.id.btn_2, ConstraintSet.BOTTOM)
-            if (flag == 1) {
-                set.connect(R.id.btn_2, ConstraintSet.END, R.id.btn_3, ConstraintSet.START)
-                set.connect(R.id.btn_2, ConstraintSet.BOTTOM, R.id.btn_3, ConstraintSet.BOTTOM)
-            } else {
+            if (flag == 0) {
+                set.setMargin(R.id.btn_2, ConstraintSet.START, dp2px(10f))
                 set.connect(R.id.btn_2, ConstraintSet.START, R.id.btn_1, ConstraintSet.END)
                 set.connect(R.id.btn_2, ConstraintSet.BOTTOM, R.id.btn_1, ConstraintSet.BOTTOM)
+            } else {
+                set.setMargin(R.id.btn_2, ConstraintSet.END, dp2px(10f))
+                set.connect(R.id.btn_2, ConstraintSet.END, R.id.btn_3, ConstraintSet.START)
+                set.connect(R.id.btn_2, ConstraintSet.BOTTOM, R.id.btn_3, ConstraintSet.BOTTOM)
             }
             set.applyTo(it)
         }
+    }
+
+    private fun dp2px(dpValue: Float): Int {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, Resources.getSystem().displayMetrics).toInt()
     }
 }
