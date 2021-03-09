@@ -104,9 +104,9 @@
                 android:text="裂项相消裂项相消裂项相消裂项相消裂项相消"
                 android:textColor="@color/white"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toTopOf="@+id/tv_slogan2"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@+id/tv_slogan2"
                 app:layout_constraintLeft_toRightOf="@+id/iv_head2"
                 app:layout_constraintRight_toLeftOf="@+id/iv_sex2"
                 app:layout_constraintTop_toTopOf="parent" />
